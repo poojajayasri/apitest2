@@ -47,7 +47,7 @@ def define_idea(idea, temp_dir):
     meal_chain = LLMChain(llm=llm, prompt=prompt_template)
     print(idea)
     print(f"{yo}")
-    yolo = meal_chain.run(idea, f"{yo}")
+    yolo = meal_chain.run(idea, yo)
     #-------------------------------------
 
     template = """You're an excellent prompt writer. Given narration script split in 3 sections and description of each section and the book name,
