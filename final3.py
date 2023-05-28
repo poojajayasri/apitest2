@@ -23,7 +23,7 @@ def define_idea(idea, temp_dir):
 
     location_chain = LLMChain(llm=llm, prompt=prompt_template)
     yo = location_chain.run(idea)
-    
+    print(yo)
     with open(f"{temp_dir}/narration.txt", "w") as file:
         file.write("yo")
         #COMMFORTESTING
@@ -45,7 +45,9 @@ def define_idea(idea, temp_dir):
     prompt_template = PromptTemplate(input_variables=["book_name", "narration_script"], template=template)
 
     meal_chain = LLMChain(llm=llm, prompt=prompt_template)
-    yolo = meal_chain.run(idea, f'{yo}')
+    print(idea)
+    print(f"{yo}")
+    yolo = meal_chain.run(idea, f"{yo}")
     #-------------------------------------
 
     template = """You're an excellent prompt writer. Given narration script split in 3 sections and description of each section and the book name,
