@@ -38,19 +38,19 @@ def define_idea(idea, temp_dir):
 
     for each character in the narration, if you describe a characters's physical appearance once, you can use the same description to describe that character's physical appearance in the rest of the sections as well.
     {book_name}
-    {narration_script}
+    
 
     YOUR RESPONSE:
     """
-    prompt_template = PromptTemplate(input_variables=["book_name", "narration_script"], template=template)
+    prompt_template = PromptTemplate(input_variables=["book_name"], template=template)
 
     meal_chain = LLMChain(llm=llm, prompt=prompt_template)
     print(idea)
     print(type(idea))
     print(yo)
     print(type(yo))
-
-    yolo = meal_chain.run(str(idea), str(yo))
+    meow = "book name:" idea + "narration script:" + yo
+    yolo = meal_chain.run(str(meow))
     #-------------------------------------
 
     template = """You're an excellent prompt writer. Given narration script split in 3 sections and description of each section and the book name,
