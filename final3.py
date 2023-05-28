@@ -89,6 +89,7 @@ def define_idea(idea, temp_dir):
     overall_chain = newone.run(yolo, yo, idea)
     #COMMFOREDIT
     #review = overall_chain.run(f'{yolo}')
+    print("HI1")
 #---------------------------------------
 
     template1 = """You're an excellent prompt writer. Given narration script split in 3 sections and description of each section and the book name,
@@ -121,7 +122,7 @@ def define_idea(idea, temp_dir):
     newone1 = LLMChain(llm=llm, prompt=prompt_template1)
 
     #COMMFOREDIT
-
+    print("HI2")
     #overall_chain = SimpleSequentialChain(chains=[meal_chain, newone], verbose=True)
     overall_chain1 = newone1.run(yolo, yo, idea)
     #-----------------------------
@@ -133,7 +134,7 @@ def define_idea(idea, temp_dir):
         lines = review.strip().splitlines()
         non_empty_lines = [line for line in lines if line.strip()]
         file.write('\n'.join(non_empty_lines))
-
+        print("HI3")
 """
 temp_dir = "/Users/poojas/LangChainExperiments/Practice/MovieProject/Deployment/tempodir"
 idea = "the queen of the damned"
