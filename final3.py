@@ -2,9 +2,8 @@ from langchain.llms import OpenAI
 from langchain.chains import LLMChain
 from langchain.prompts import PromptTemplate
 from langchain.chains import SimpleSequentialChain
-import streamlit as stt
 #-------------------------------------
-openai_api_key = "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"
+openai_api_key = os.environ.get("OPENAI_API_KEY")
 llm = OpenAI(temperature=0.5, openai_api_key=openai_api_key, max_tokens = 2000)
 #-------------------------------------1.5 min 10 sections
 def define_idea(idea, temp_dir):
@@ -46,8 +45,6 @@ def define_idea(idea, temp_dir):
 
     meal_chain = LLMChain(llm=llm, prompt=prompt_template)
     yolo = meal_chain.run(book_name = idea, narration_script = f'{yo}')
-    stt.write(yo)
-    stt.write(yolo)
     #-------------------------------------
 
     template = """You're an excellent prompt writer. Given narration script split in 3 sections and description of each section and the book name,
@@ -84,7 +81,6 @@ def define_idea(idea, temp_dir):
 
     #overall_chain = SimpleSequentialChain(chains=[meal_chain, newone], verbose=True)
     overall_chain = newone.run(description = f'{yolo}', narrationscript = f'{yo}', bookname = idea )
-    stt.write(overall_chain)
     #COMMFOREDIT
     #review = overall_chain.run(f'{yolo}')
 #---------------------------------------
@@ -122,18 +118,15 @@ def define_idea(idea, temp_dir):
 
     #overall_chain = SimpleSequentialChain(chains=[meal_chain, newone], verbose=True)
     overall_chain1 = newone1.run(description1 = f'{yolo}', narrationscript1 = f'{yo}', bookname1 = idea )
-    stt.write(overall_chain1)
     #-----------------------------
     #ADDFOREDIT
     review = overall_chain + "\n" + overall_chain1
-    stt.write(review)
     #with open(f"{temp_dir}/ttt.txt", "w") as file:
         #file.write(review.strip())
     with open(f"{temp_dir}/ttt.txt", "w") as file:
         lines = review.strip().splitlines()
         non_empty_lines = [line for line in lines if line.strip()]
         file.write('\n'.join(non_empty_lines))
-        #stt.write(non_empty_lines)
 
 """
 temp_dir = "/Users/poojas/LangChainExperiments/Practice/MovieProject/Deployment/tempodir"
