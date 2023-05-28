@@ -2,6 +2,7 @@ from langchain.llms import OpenAI
 from langchain.chains import LLMChain
 from langchain.prompts import PromptTemplate
 from langchain.chains import SimpleSequentialChain
+import os
 #-------------------------------------
 openai_api_key = os.environ.get("OPENAI_API_KEY")
 llm = OpenAI(temperature=0.5, openai_api_key=openai_api_key, max_tokens = 2000)
