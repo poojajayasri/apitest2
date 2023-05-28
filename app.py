@@ -5,7 +5,7 @@ import os
 import cv2
 import tempfile
 import NewTextClip
-
+from flask import send_file
 from moviepy.editor import *
 import openai
 import requests
@@ -232,11 +232,14 @@ def answer():
             final_video = CompositeVideoClip([video] + subtitle_clips)
             clip = final_video.subclip(0, audio_clip.duration)
             clip.write_videofile(f"{temp_dir}/moviesubbd.mp4")
-
-
+            video_path = f"{temp_dir}/moviesubbd.mp4"
+            
 
             with open(f"{temp_dir}/moviesubbd.mp4", 'rb') as f:
                 video_bytes = f.read()
+            return video_path
+            #return send_file(video_path, mimetype='video/mp4')
+               
     #---------------------------------------------------------------------------
 
     #---------------------------------------------------------------------------
@@ -286,11 +289,11 @@ def answer():
             #-------------------------
             total_images = 2
             ii = total_images - 1
-            crossfade(ii, total_images)
+            video_path = crossfade(ii, total_images)
+            return send_file(video_path, mimetype='video/mp4')
 
 
-
-    return jsonify({"answer": answer})
+    #return jsonify({"answer": answer})
 #------------------------------------------
 if __name__ == "__main__":
     app.run(port=8000)
