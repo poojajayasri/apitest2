@@ -84,9 +84,9 @@ def define_idea(idea, temp_dir):
     newone = LLMChain(llm=llm, prompt=prompt_template)
 
     #COMMFOREDIT
-
+    meow1 = "Description:" + yolo + "narrationscript:" + yo + "bookname:" + idea
     #overall_chain = SimpleSequentialChain(chains=[meal_chain, newone], verbose=True)
-    overall_chain = newone.run(description = f'{yolo}', narrationscript = f'{yo}', bookname = idea )
+    overall_chain = newone.run(yolo, yo, idea)
     #COMMFOREDIT
     #review = overall_chain.run(f'{yolo}')
 #---------------------------------------
@@ -123,7 +123,7 @@ def define_idea(idea, temp_dir):
     #COMMFOREDIT
 
     #overall_chain = SimpleSequentialChain(chains=[meal_chain, newone], verbose=True)
-    overall_chain1 = newone1.run(description1 = f'{yolo}', narrationscript1 = f'{yo}', bookname1 = idea )
+    overall_chain1 = newone1.run(yolo, yo, idea)
     #-----------------------------
     #ADDFOREDIT
     review = overall_chain + "\n" + overall_chain1
