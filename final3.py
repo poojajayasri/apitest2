@@ -49,7 +49,7 @@ def define_idea(idea, temp_dir):
     print(type(idea))
     print(yo)
     print(type(yo))
-    meow = "book name:" idea + "narration script:" + yo
+    meow = "book name:" + idea + "narration script:" + yo
     yolo = meal_chain.run(str(meow))
     #-------------------------------------
 
