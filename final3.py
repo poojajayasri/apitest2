@@ -51,6 +51,7 @@ def define_idea(idea, temp_dir):
     print(type(yo))
     meow = "book name:" + idea + "narration script:" + yo
     yolo = meal_chain.run(str(meow))
+    print(str(yolo))
     #-------------------------------------
 
     template = """You're an excellent prompt writer. Given narration script split in 3 sections and description of each section and the book name,
