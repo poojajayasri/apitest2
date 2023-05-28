@@ -5,3 +5,11 @@ requests
 jsonify
 flask_cors
 gunicorn
+opencv-python
+streamlit
+moviepy
+opencv-contrib-python
+elevenlabs
+pysrt
+numpy
+pillow
