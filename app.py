@@ -252,6 +252,7 @@ def answer():
     if idea:
         #COMMFORTEST
         final3.define_idea(idea, temp_dir)
+        print("after define")
         time.sleep(20)
         if a == "Dall e":
 
