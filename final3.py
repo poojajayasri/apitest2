@@ -50,6 +50,7 @@ def define_idea(idea, temp_dir):
     print(yo)
     print(type(yo))
     meow = "book name:" + idea + "narration script:" + yo
+    print(str(meow))
     yolo = meal_chain.run(str(meow))
     print(str(yolo))
     #-------------------------------------
