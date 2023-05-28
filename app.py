@@ -45,7 +45,8 @@ def answer():
     class ImageGenerator:
         def __init__(self) -> str:
             self.image_urls = []
-            openai.api_key = "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"
+            openai.api_key = os.environ.get("OPENAI_API_KEY")
+            #"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"
             #os.environ["OPENAI_API_KEY"] = "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"
             self.name = None
 
