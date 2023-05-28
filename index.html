@@ -69,15 +69,29 @@
       async function getAnswer() {
         const query = document.getElementById("query").value;
         const response = await fetch(`/answer?query=${encodeURIComponent(query)}`);
-        const json = await response.json();
-        const answer = json.answer;
+        if (response.ok) {
+          const contentType = response.headers.get('content-type');
+          if (contentType.includes('video')) {
+            const blob = await response.blob();
+            const videoURL = URL.createObjectURL(blob);
 
-        const answerDiv = document.getElementById("answer");
-        answerDiv.innerHTML = `
-          <h2>Answer:</h2>
-          <p>${answer}</p>
-        `;
-      }
+            const answerDiv = document.getElementById("answer");
+            answerDiv.innerHTML = `
+              <h2>Video:</h2>
+              <video controls>
+                <source src="${videoURL}" type="${contentType}">
+              </video>
+            `;
+          } else {
+            const json = await response.json();
+            const answer = json.answer;
+
+            const answerDiv = document.getElementById("answer");
+            answerDiv.innerHTML = `
+              <h2>Answer:</h2>
+              <p>${answer}</p>
+            `;
+      }}}
     </script>
   </body>
 </html>
