@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Language Chain Demo</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+
+      h1 {
+        text-align: center;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 10px;
+      }
+
+      input[type="text"] {
+        padding: 5px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      button {
+        padding: 5px 10px;
+        font-size: 16px;
+        background-color: #4CAF50;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        width: 100%;
+        margin-top: 10px;
+      }
+
+      button:hover {
+        background-color: #45a049;
+      }
+
+      #answer {
+        margin-top: 20px;
+      }
+
+      #answer h2 {
+        margin-top: 0;
+      }
+
+      #answer p {
+        font-size: 18px;
+        line-height: 1.5;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Language Chain Demo</h1>
+    <form>
+      <label for="query">Enter a question or query below:</label>
+      <input type="text" id="query" name="query">
+      <button type="button" onclick="getAnswer()">Get Answer</button>
+    </form>
+    <div id="answer"></div>
+
+    <script>
+      async function getAnswer() {
+        const query = document.getElementById("query").value;
+        const response = await fetch(`/answer?query=${encodeURIComponent(query)}`);
+        const json = await response.json();
+        const answer = json.answer;
+
+        const answerDiv = document.getElementById("answer");
+        answerDiv.innerHTML = `
+          <h2>Answer:</h2>
+          <p>${answer}</p>
+        `;
+      }
+    </script>
+  </body>
+</html>
