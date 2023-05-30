@@ -189,8 +189,8 @@ def answer():
 
             with open(f"{temp_dir}/narration.txt", "r") as f:
                 text = f.read()
-
-
+            #AUDIO STUFF. COMMENTING FOR TESTING
+            """
             audio_bytes = generate(
             text=text,
             voice="Bella",
@@ -200,18 +200,25 @@ def answer():
             audio_bytes_io = BytesIO(audio_bytes)
             with open(f"{temp_dir}/movieaudio.mp3", 'wb') as f:
                f.write(audio_bytes)
-
+            
 
             audio_clip = AudioFileClip(f"{temp_dir}/movieaudio.mp3")
+            """
+            
             video_clip = final_video
-            duration_ratio = video_clip.duration / audio_clip.duration
-            stretched_video = video_clip.fx(vfx.speedx, duration_ratio)
-            final_clip = stretched_video.set_audio(audio_clip)
+            #AUDIO STUFF. COMMENTING FOR TESTING
+            #duration_ratio = video_clip.duration / audio_clip.duration
+            
+            #stretched_video = video_clip.fx(vfx.speedx, duration_ratio)
+            #AUDIO STUFF. COMMENTING FOR TESTING
+            #final_clip = stretched_video.set_audio(audio_clip)
+            final_clip = video_clip
 
 
             video = final_clip
 
             #COMMFORDEV
+            """
             with open(f"{temp_dir}/movieaudio.mp3", "rb") as audio_file:
                 transcript = openai.Audio.transcribe(
                     file = audio_file,
@@ -231,7 +238,10 @@ def answer():
 
             final_video = CompositeVideoClip([video] + subtitle_clips)
             clip = final_video.subclip(0, audio_clip.duration)
+            
             clip.write_videofile(f"{temp_dir}/moviesubbd.mp4")
+            """
+            video.write_videofile(f"{temp_dir}/moviesubbd.mp4")
             video_path = f"{temp_dir}/moviesubbd.mp4"
             
 
