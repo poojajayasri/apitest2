@@ -302,7 +302,8 @@ def answer():
             #-------------------------
             total_images = 2
             ii = total_images - 1
-            video_path = crossfade(ii, total_images)
+            video_path = f"{temp_dir}/output1.mp4"
+            #crossfade(ii, total_images)
             return send_file(video_path, mimetype='video/mp4')
 
 
