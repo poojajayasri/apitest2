@@ -304,7 +304,8 @@ def answer():
             ii = total_images - 1
             video_path = f"{temp_dir}/output1.mp4"
             #crossfade(ii, total_images)
-            return send_file(video_path, mimetype='video/mp4')
+            file_to_be_sent = open(video_path, 'rb')
+            return send_file(file_to_be_sent, mimetype='video/mp4')
 
 
     #return jsonify({"answer": answer})
