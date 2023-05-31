@@ -70,7 +70,7 @@ def define_idea(idea, temp_dir):
     Important: 
     for each character in the narration, if you describe a characters's physical appearance once,  use the same description to describe that character's physical appearance in the rest of the sections as well.
     But definitely describe in each prompt:  how  the characters look - their complexion, height, size, hair color, facial features
-    each prompt should be of 50 words 
+    each prompt should be of 25 words 
     Book in {description} . Only output the prompt as one sentence. dont mention the scene no.
     Each prompt in new line: IMPORTANT
     YOUR RESPONSE:
@@ -88,7 +88,7 @@ def define_idea(idea, temp_dir):
     #COMMFOREDIT
     print("HIee")
     
-    meow1 = "Description:" + yolo + "narrationscript:" + yo + "bookname:" + idea
+    meow1 = "Description:" + yolo + "narrationscript:" + yo
     print(meow1)
     #overall_chain = SimpleSequentialChain(chains=[meal_chain, newone], verbose=True)
     overall_chain = newone.run(str(meow1))
