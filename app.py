@@ -131,10 +131,10 @@ def answer():
 
         # Release the video writer and destroy all windows
         out.release()
-        print(f"{temp_dir}/output{ii}.mp4")
+        path_time = f"{temp_dir}/output{ii}.mp4"
         with open(f"{temp_dir}/output{ii}.mp4", 'rb') as f:
             video_bytes = f.read()
-        return video_bytes
+        return path_time
         cv2.destroyAllWindows()
     #------------------------------------------
     def time_to_seconds(time_obj):
@@ -306,8 +306,8 @@ def answer():
             ii = total_images - 1
             video_path = f"{temp_dir}/output1.mp4"
             #crossfade(ii, total_images)
-            file_to_be_sent = open(video_path, 'rb')
-            return send_file(BytesIO(video_bytes), mimetype='video/mp4')
+            file_to_be_sent = open(path_time, 'rb')
+            return send_file(file_to_be_sent, mimetype='video/mp4')
 
 
     #return jsonify({"answer": answer})
