@@ -241,12 +241,14 @@ def answer():
             
             clip.write_videofile(f"{temp_dir}/moviesubbd.mp4")
             """
-            video.write_videofile(f"{temp_dir}/moviesubbd.mp4")
+            #video.write_videofile(f"{temp_dir}/moviesubbd.mp4")
             video_path = f"{temp_dir}/moviesubbd.mp4"
             
 
             with open(f"{temp_dir}/moviesubbd.mp4", 'rb') as f:
                 video_bytes = f.read()
+            video_path = f"{temp_dir}/output1.mp4"
+
             return video_path
             #return send_file(video_path, mimetype='video/mp4')
                
