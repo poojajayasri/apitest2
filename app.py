@@ -131,8 +131,10 @@ def answer():
 
         # Release the video writer and destroy all windows
         out.release()
+        print(f"{temp_dir}/output{ii}.mp4")
         with open(f"{temp_dir}/output{ii}.mp4", 'rb') as f:
-                video_bytes = f.read()
+            video_bytes = f.read()
+        return video_bytes
         cv2.destroyAllWindows()
     #------------------------------------------
     def time_to_seconds(time_obj):
@@ -293,7 +295,7 @@ def answer():
                 if img1 is None:
                     print(f"Error: Failed to read image file {temp_dir}/{i}.jpg")
 
-                zoom(img1,i)
+                video_bytes = zoom(img1,i)
                 print(i)
 
             # Release the video writer and destroy all windows
@@ -305,7 +307,7 @@ def answer():
             video_path = f"{temp_dir}/output1.mp4"
             #crossfade(ii, total_images)
             file_to_be_sent = open(video_path, 'rb')
-            return send_file(file_to_be_sent, mimetype='video/mp4')
+            return send_file(BytesIO(video_bytes), mimetype='video/mp4')
 
 
     #return jsonify({"answer": answer})
