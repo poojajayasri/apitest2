@@ -19,6 +19,8 @@ from moviepy.video.io.VideoFileClip import VideoFileClip
 import moviepy
 from moviepy.editor import  AudioFileClip, vfx
 import pysrt
+from flask import make_response
+
 from moviepy.editor import VideoFileClip, TextClip, CompositeVideoClip
 import os
 #---------------------------
@@ -306,9 +308,18 @@ def answer():
             ii = total_images - 1
             video_path = f"{temp_dir}/output1.mp4"
             #crossfade(ii, total_images)
+            """
             file_to_be_sent = open(path_time, 'rb')
             return send_file(file_to_be_sent, mimetype='video/mp4')
+            """
 
+            file_to_be_sent = open(video_path, 'rb')
+            video_data = file_to_be_sent.read()
+            file_to_be_sent.close()
+
+            response = make_response(video_data)
+            response.headers.set('Content-Type', 'video/mp4')
+            return response
 
     #return jsonify({"answer": answer})
 #------------------------------------------
