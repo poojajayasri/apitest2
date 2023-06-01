@@ -77,9 +77,9 @@
 
             const answerDiv = document.getElementById("answer");
             answerDiv.innerHTML = `
-              <h2>{videoURL}{response}</h2>
+              <h2>${videoURL} ${response}</h2>
               
-              <p>{blob}</p>
+              <p>${blob}</p>
               <video controls>
                 <source src="${videoURL}" type="${contentType}">
               </video>
