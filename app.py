@@ -313,8 +313,13 @@ def answer():
             file_to_be_sent = open(path_time, 'rb')
             return send_file(file_to_be_sent, mimetype='video/mp4')
             """
-
-            file_to_be_sent = open(video_path, 'rb')
+            source_path = f"{temp_dir}/output1.mp4"
+            destination_path = "putput.mp4"
+            
+            with open(source_path, 'rb') as source_file, open(destination_path, 'wb') as destination_file:
+                destination_file.write(source_file.read())
+                
+            file_to_be_sent = open(destination_path, 'rb')
             video_data = file_to_be_sent.read()
             file_to_be_sent.close()
 
