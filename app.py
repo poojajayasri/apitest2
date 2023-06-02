@@ -307,6 +307,7 @@ def answer():
             total_images = 2
             ii = total_images - 1
             video_path = f"{temp_dir}/output1.mp4"
+            print(video_path)
             #crossfade(ii, total_images)
             """
             file_to_be_sent = open(path_time, 'rb')
